@@ -6,4 +6,4 @@ The *ice* folder contains in-class exercises.
 
 ## About Me
 Marissa Scarangella - Portfolio Website still in progress.
-Creative and organized Web Design graduate looking to fill the position of a Front End Developer. Experienced in HTML and CSS, wishing to use creativity to achieve company goals.
+<br><br>Creative and organized Web Design graduate looking to fill the position of a Front End Developer. Experienced in HTML and CSS, wishing to use creativity to achieve company goals.
