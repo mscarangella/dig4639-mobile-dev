@@ -1,0 +1,19 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "lab 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "Adder.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "dig4639-mobile-dev"
+  },
+  "keywords": [
+    "lab",
+    "1"
+  ],
+  "author": "Marissa Scarangella",
+  "license": "MIT"
+}
