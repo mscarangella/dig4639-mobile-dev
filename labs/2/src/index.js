@@ -1,4 +1,4 @@
-import Card from "./components/Card/index.js"
+import Card from "./components/Card/index.js";
 
 function runOnLoad()
 {
