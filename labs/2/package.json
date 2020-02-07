@@ -1,0 +1,19 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "Package Lab 2",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "dig4369-mobile-dev"
+  },
+  "keywords": [
+    "lab",
+    "2"
+  ],
+  "author": "Marissa Scarangella",
+  "license": "ISC"
+}
