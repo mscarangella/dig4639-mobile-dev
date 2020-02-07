@@ -1,4 +1,4 @@
-let Card; // TODO: Replace this with the correct import statement
+import Card from "./components/Card/index.js"
 
 function runOnLoad()
 {
