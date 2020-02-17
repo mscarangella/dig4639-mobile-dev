@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "sum.js",
+  "type" : "module",
   "scripts": {
-    "test": "jest"
+    "test": "jest --watch"
   },
   "author": "",
   "license": "ISC",

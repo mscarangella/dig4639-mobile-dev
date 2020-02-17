@@ -1,8 +1,31 @@
-import { Sum } from './sum.js'
+//bro im so sorry
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(Sum(1, 2)).toBe(3)
+import { Sum } from './MyMath.js'
+import { AddList } from './MyMath.js'
+
+describe("Sum", () => {
+  test('adds 1 + 2 to equal 3', () => {
+   expect(Sum(1, 2)).toBe(3)
+  })
+
+  test('Whether undefined is returned on invalid type', () => {
+    expect(Sum(-10, "Twenty")).toBeUndefined()
+   })
+
+  it('adds 10 + 20 to equal 30', () =>{
+   expect(Sum(10, 20)).toBe(30)
+  })
 })
+
+  describe("AddList", () => {
+      it('adds 1 + 2 + 3 + 4 + 5 to equal 15', () =>{
+    expect(Sum(1, 2, 3, 4, 5)).toBe(15)
+  })
+  it('Whether undefined is returned on invalid type', () =>{
+    expect(Sum(1, "panda", 3, "monkey", 5)).toBeUndefined()
+  })
+  })
+
 
 // ICE 
 
