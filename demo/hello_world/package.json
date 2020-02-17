@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "hello_world",
+=======
+  "name": "hello_world2",
+>>>>>>> b09e84dd73f19a1601e6a93cb4e7bf1317d827be
   "version": "0.1.0",
   "private": true,
   "dependencies": {
