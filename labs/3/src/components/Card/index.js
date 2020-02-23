@@ -1,6 +1,7 @@
 import'./index.css'
+import React from 'react'
 
-class Card {
+class Card extends React.Component{
   constructor(props) {
       this.props = props;
       this.element = document.createElement("div");
@@ -10,10 +11,8 @@ class Card {
       span.innerHTML = this.props.content;
       this.element.className = "card";
   }
-
-  render() {
-      return this.element;
-  }
+render(){
+  return Card
 }
 
 export default Card;
