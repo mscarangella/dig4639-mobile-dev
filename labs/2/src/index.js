@@ -1,4 +1,4 @@
-import Card from './components/Card/index3.js'
+import Card from './components/Card/index.js'
 
 function runOnLoad () {
   // Create a container for us
