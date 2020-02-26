@@ -11,7 +11,7 @@ class TodoList extends React.Component {
     super(props)
     this.state = {
       todoList,
-      hideCompletedItem:false
+      hideCompletedItem:false,
     }
     this.currentId = 4;
   }
@@ -22,11 +22,12 @@ class TodoList extends React.Component {
       { "id": this.currentId,"content": this.refs.taskContent.value, "priority": 1, "completed": true }
     )
     this.currentId++
-    this.setState({todoList:todoList})
+    this.setState({todoList})
   }
   removeTask(id){
     console.log(id)
     let todoList = this.state.todoList
+    console.log(todoList)
     todoList = todoList.filter((v) => v.id !== id)
     console.log(todoList)
     this.setState({todoList})
@@ -39,8 +40,8 @@ class TodoList extends React.Component {
     <input type="checkbox" ref="hideCompletedItemCheckbox" id="hideCompletedItem" name="hideCompletedItem" value="hideCompletedItem" 
     onChange = {(e) => this.setState({hideCompletedItems: e.target.checked})} />
     <label htmlFor="hideCompletedItem"> Yeehaw</label><br></br>
-    {((this.state.hideCompletedItems) ? this.state.todoList
-    .filter((v) => !v.completed) : todoList)
+    {((this.state.hideCompletedItem) ? this.state.todoList
+    .filter((v) => !v.completed) : this.state.todoList)
     .map((v) => <TodoItem id ={v.id} removeTask={(id) => this.removeTask(id)} key={v.id} content={v.content}
     priority = {v.priority}
     completed = {v.completed} />)}
