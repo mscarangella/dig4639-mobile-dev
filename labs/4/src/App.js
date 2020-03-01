@@ -1,9 +1,10 @@
 import React from 'react';
-import Card from './labs/4/components/Card/index.js';
+import Card from './components/Card/index.js';
+//import CardList from './components/CardList/index.js';
 
 class App extends React.Component{
   render(){
-    return(
+      return (
       <Card content="This is a card!"></Card>
     )
   }
