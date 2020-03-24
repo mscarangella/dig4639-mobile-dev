@@ -26,14 +26,15 @@ Procedure
     ```
 1. Use Postman to send a GET request to localhost:3001
     <details><summary>Screenshot of Postman</summary>
-    ![alt text](./images/Postman-localhost.PNG)
+    ![Postman usage](./images/Postman-localhost.PNG)
     </details>
 1. Use a Chrome Developer Tools to examine navigating to localhost:3001:
     <details><summary>Screenshot of Chrome</summary>
-    ![alt text](./images/Chrome-localhost.PNG)
+    ![Chrome developer tools](./images/Chrome-localhost.PNG)
     </details>
 # Create a simple React app to act as client
 1. Create a new react app in the client directory:
 ```bash
 npx create-react-app client
 ```
+    ![alt text](./images/npx-post-create-react-app.PNG)
