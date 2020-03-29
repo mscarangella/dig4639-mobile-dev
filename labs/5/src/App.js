@@ -1,13 +1,12 @@
 import React from 'react';
-import Weather from './components/Weather';
 import './App.css';
-import Card from './components/Card';
+import CardList from './components/CardList';
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <Weather />
+        <CardList />
       </div>
     );
   }
