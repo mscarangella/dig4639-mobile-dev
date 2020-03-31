@@ -7,13 +7,13 @@ import Card from './components/Card';
       this.state = {content:"", list: []}
     }
     async getServerData(){
-      const response = await fetch("https://api.weather.gov/gridpoints/MLB/25,69/forecast")
-      console.log("Here's the weather!")
-      console.log(response)
-      let obj = await response.json()
-      console.log("Processed weather as JSON: ", obj)
-      this.setState({content:obj.b})
-      this.setState({list:obj.list})
+      await fetch("https://api.weather.gov/gridpoints/MLB/25,69/forecast")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
     }
     componentDidMount(){
       console.log("Component did mount!")
@@ -21,11 +21,7 @@ import Card from './components/Card';
     }
     render(){
       return(
-        <div>
-          <p>{this.state.content}</p>
-          {this.state.list.map((listObject, index) =>
-          <Card key={index} title={listObject.title}>{listObject.content}</Card>)}
-        </div>
+        <Card />
       )
     }
     }
