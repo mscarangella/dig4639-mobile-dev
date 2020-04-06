@@ -1,0 +1,55 @@
+{"quiz" : {
+  "quiz1" : {
+    "question1" : {
+      "correctoption" : "option3",
+      "options" : {
+        "option1" : "Pink",
+        "option2" : "Purple",
+        "option3" : "Blue",
+        "option4" : "Green"
+      },
+      "question" : "What color is the sky?"
+    },
+    "question2" : {
+      "correctoption" : "option4",
+      "options" : {
+          "option1" : "Dog",
+          "option2" : "Owl",
+          "option3" : "Bear",
+          "option4" : "Cow"
+        },
+      "question" : "What animal makes the sound 'Moo'?"
+    },
+    "question3" : {
+      "correctoption" : "option1",
+      "options" : {
+          "option1" : "101 Dalmation",
+          "option2" : "Mulan",
+          "option3" : "Big Hero 6",
+          "option4" : "Cinderella"
+        },
+      "question" : "Which Disney movie has Cruella DeVil in it?"
+    },
+    "question4" : {
+      "correctoption" : "option2",
+      "options" : {
+          "option1" : "JavaScript",
+          "option2" : "React Native",
+          "option3" : "HTML",
+          "option4" : "JSON"
+        },
+      "question" : "What language am I writing this app in?"
+    },
+    "question5" : {
+      "correctoption" : "option3",
+      "options" : {
+          "option1" : "The Force Awakens",
+          "option2" : "Rogue One",
+          "option3" : "The Last Jedi",
+          "option4" : "The Rise of Skywalker"
+        },
+      "question" : "Rian Johnson directed which Star Wars movie?"
+    }
+  }
+}
+}

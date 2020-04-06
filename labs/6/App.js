@@ -1,5 +1,9 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+//import Quiz  from './components/Quiz/quiz.json';
+import {
+  StyleSheet,
+  View,
+  Text } from 'react-native';
 
 export default class App extends React.Component {
     render(){
