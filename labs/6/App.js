@@ -1,5 +1,4 @@
 import React from 'react';
-//import Quiz  from './components/Quiz/quiz.json';
 import questions from './quiz.json';
 import {
   StyleSheet,
@@ -14,10 +13,10 @@ import {
     </View>
      )
     }
-};
-*/
+}; */
 
-//NEED TO CHANGE TO REACT NATIVE!!!!!
+
+//Above is the converted default code ^^^^^
 
 const TITLE_STATE = 0
 const QUESTION_STATE = 1
@@ -26,12 +25,12 @@ const TIME_LIMIT = 5
 
 class QuizQuestion extends React.Component{
   render(){
-    return <>
-    <h1>{this.props.question}</h1>
+    return <View>
+    <Text style={styles.title}>{this.props.question}</Text>
     {this.props.answer.map((v, i) =>
-    <input className="answerButton" onClick={() => this.props.nextQuestion(v.correct)} type="button" key={i}
+    <input className="answerButton" onPress={() => this.props.nextQuestion(v.correct)} type="button" key={i}
     value={v.text}/>)}
-    </>
+    </View>
   }
 }
 
@@ -96,28 +95,29 @@ class TitlePage extends React.Component{
   }
   render(){
     return(
-      <>
-      <p>{this.timeLimit - this.state.counter}</p>
+      <View>
+      <Text>{this.timeLimit - this.state.counter}</Text>
       {((this.state.currentState === TITLE_STATE) ?
       <>
-      <h2>{this.state.titleText}</h2>
-      <input className="start" type="button" value="start" onclick={()=>this.start()} />
+      <Text>{this.state.titleText}</Text>
+      <input className="start" type="button" value="start" onPress={()=>this.start()} />
       </>
       :
       <QuizQuestion answer = {questions[this.state.currentQuestion].possibleAnswers} question = {
         questions[this.state.currentQuestion].question} nextQuestion = {(correct) => this.nextQuestion(correct)}></QuizQuestion>)}
-      <p>Score: {this.state.score}</p>
-      </>)
+      <Text>Score: {this.state.score}</Text>
+      </View>)
 }
 }
 
 
-function App() {
-  return (
-    <div className = "App">
-      <TitlePage></TitlePage>
-    </div>
-  );
+class App extends React.Component {
+  render(){
+    return(
+    <View className = "App" style={styles.container}>
+      <Text><TitlePage></TitlePage></Text>
+    </View>);
+}
 }
 
 export default App;
@@ -125,13 +125,12 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#8ED1FC',
+    backgroundColor: '#8ed1fc',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
+  title : {
     fontFamily: 'Helvetica',
-    fontSize: '20px',
-    color: '#BF4061',
+    color: '#bf4061',
   },
 });
