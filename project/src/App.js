@@ -1,4 +1,8 @@
 import React from 'react';
+import Add from './components/Add';
+import Contacts from './components/Contacts';
+import Profile from './components/Profile';
+import Remove from './components/Remove';
 
 class App extends React.Component {
 
