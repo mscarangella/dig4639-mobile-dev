@@ -10,7 +10,7 @@ export default class HomeScreen extends React.Component {
   state = {todoList:[]}
 
   componentDidMount() {
-    fetch('http://plato.mrl.ai:8080/contacts', {
+    window.fetch('http://plato.mrl.ai:8080/contacts', {
         headers: {
           "API":"scarangella"
         }
@@ -24,7 +24,7 @@ export default class HomeScreen extends React.Component {
 
   // Implement completing the task on the server
   completeTask(position, state) {
-    fetch('http://plato.mrl.ai:8080/contacts/add', {
+    window.fetch('http://plato.mrl.ai:8080/contacts/add', {
       method: "POST",
       headers: {
         "API":"scarangella",
