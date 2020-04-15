@@ -11,6 +11,7 @@ export default class HomeScreen extends React.Component {
 
   componentDidMount() {
     window.fetch('http://plato.mrl.ai:8080/contacts', {
+        method: "GET",
         headers: {
           "API":"scarangella"
         }
@@ -50,7 +51,7 @@ export default class HomeScreen extends React.Component {
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
         <Text>Contacts:</Text>
         {this.state.contacts.map((item, index) =>
-          <View key={index} style={styles.todoView}>
+          <View key={index} style={styles.contactsView}>
             <Text>{index}: {item.text} {item.completed ? "ADDED" : ""}
             </Text>
           </View>
@@ -99,7 +100,7 @@ function handleHelpPress() {
 }
 
 const styles = StyleSheet.create({
-  todoView: {
+  contactsView: {
     flex: 1,
     flexDirection: 'row',
     backgroundColor: '#fad0c3',
