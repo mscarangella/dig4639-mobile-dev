@@ -1,7 +1,6 @@
 import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Button, Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-//import { CheckBox } from 'react-native-elements'
 import { ScrollView } from 'react-native-gesture-handler';
 
 import { MonoText } from '../components/StyledText';
@@ -16,17 +15,14 @@ export default class HomeScreen extends React.Component {
           "API":"scarangella"
         }
     })
-      .then(res => res.json())
-      .then(body => {
-        console.log(body)
-        this.setState({contacts:body.contacts})
-      })
+    .then((res) => res.json())
+    .then((data) => {
+      this.setState({contacts: data.contacts});
+    });
   }
 
-  // Implement completing the task on the server
   addContact(position, state) {
-    window.fetch('http://plato.mrl.ai:8080/contacts/add', {
-      method: "POST",
+    window.fetch('http://plato.mrl.ai:8080/contacts',{
       headers: {
         "API":"scarangella",
         "Content-Type": "application/json",
@@ -50,12 +46,11 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
         <Text>Contacts:</Text>
-        {this.state.contacts.map((item, index) =>
-          <View key={index} style={styles.contactsView}>
-            <Text>{index}: {item.text} {item.completed ? "ADDED" : ""}
-            </Text>
-          </View>
-        )}
+        {
+         this.state.contacts.map((value, index) => {
+           return <p key={index}>{value.name}</p>;
+         })
+       }
       </ScrollView>
     </View>
     );
