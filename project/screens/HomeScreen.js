@@ -1,13 +1,13 @@
 import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Button, Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { CheckBox } from 'react-native-elements'
+//import { CheckBox } from 'react-native-elements'
 import { ScrollView } from 'react-native-gesture-handler';
 
 import { MonoText } from '../components/StyledText';
 
 export default class HomeScreen extends React.Component {
-  state = {todoList:[]}
+  state = {contacts:[]}
 
   componentDidMount() {
     window.fetch('http://plato.mrl.ai:8080/contacts', {
@@ -18,12 +18,12 @@ export default class HomeScreen extends React.Component {
       .then(res => res.json())
       .then(body => {
         console.log(body)
-        this.setState({todoList:body.contacts})
+        this.setState({contacts:body.contacts})
       })
   }
 
   // Implement completing the task on the server
-  completeTask(position, state) {
+  addContact(position, state) {
     window.fetch('http://plato.mrl.ai:8080/contacts/add', {
       method: "POST",
       headers: {
@@ -37,11 +37,10 @@ export default class HomeScreen extends React.Component {
       .then(body => {
         console.log(body)
         if(body.updated != undefined) {
-          const currentList = [...this.state.todoList]
-          currentList[position].completed = state
-          this.setState({todoList: currentList})
+          const currentContacts = [...this.state.contacts]
+          currentContacts[position].completed = state
+          this.setState({contacts: currentContacts})
         }
-        // this.setState({todoList:body.todo})
       })
   } 
 
@@ -49,14 +48,10 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        <Text>Todo items:</Text>
-        {this.state.todoList.map((item, index) =>
+        <Text>Contacts:</Text>
+        {this.state.contacts.map((item, index) =>
           <View key={index} style={styles.todoView}>
-           <CheckBox
-            checked={item.completed}
-            onPress={() => this.completeTask(index, !item.completed)}
-          />
-            <Text>{index}: {item.text} {item.completed ? "COMPLETED" : ""}
+            <Text>{index}: {item.text} {item.completed ? "ADDED" : ""}
             </Text>
           </View>
         )}
@@ -107,11 +102,11 @@ const styles = StyleSheet.create({
   todoView: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: '#fad0c3',
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fad0c3',
   },
   developmentModeText: {
     marginBottom: 20,
@@ -173,12 +168,12 @@ const styles = StyleSheet.create({
       },
     }),
     alignItems: 'center',
-    backgroundColor: '#fbfbfb',
+    backgroundColor: '#c4def6',
     paddingVertical: 20,
   },
   tabBarInfoText: {
     fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
+    color: '#c4def6',
     textAlign: 'center',
   },
   navigationFilename: {
