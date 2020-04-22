@@ -56,7 +56,6 @@ export default class AddContactsScreen extends React.Component{
       }
     })
   }
-}
 
 render(){
   return (
@@ -70,7 +69,7 @@ render(){
     </ScrollView>
   )
 }
-
+}
 
 const styles = StyleSheet.create({
   container: {
