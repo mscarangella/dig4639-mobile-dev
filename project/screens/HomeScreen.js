@@ -6,51 +6,92 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { MonoText } from '../components/StyledText';
 
 export default class HomeScreen extends React.Component {
-  state = {contacts:[]}
+  state = {contactsList:[]}
+  focusListener = undefined;
 
-  componentDidMount() {
-    window.fetch('http://plato.mrl.ai:8080/contacts', {
-        method: "GET",
-        headers: {
-          "API":"scarangella"
-        }
-    })
-    .then((res) => res.json())
-    .then((data) => {
-      this.setState({contacts: data.contacts});
-    });
+  constructor(props){
+    super(props)
+    this.focusListener = props.navigation.addListener('focus', () => this.componentGainsFocus())
   }
 
-  addContact(position, state) {
-    window.fetch('http://plato.mrl.ai:8080/contacts',{
+  updateContacts(){
+    fetch('http://plato.mrl.ai:8080/contacts', {
       headers: {
-        "API":"scarangella",
-        "Content-Type": "application/json",
-        "Accept":"application/json"
-      },
-      body: JSON.stringify({position:position, status:true})
+        "API": "scarangella"
+      }
     })
-      .then(res => res.json())
-      .then(body => {
-        console.log(body)
-        if(body.updated != undefined) {
-          const currentContacts = [...this.state.contacts]
-          currentContacts[position].completed = state
-          this.setState({contacts: currentContacts})
-        }
-      })
-  } 
+    .then(res => res.json())
+    .then(body => {
+      console.log(body)
+      this.setState({contactsList:body.contacts})
+    })
+  }
+
+  componentGainsFocus(){
+    console.log("Has focus")
+    this.updateContacts()
+  }
+
+  componentWillUnmount(){
+    this.props.navigation.removeListener('focus', this.componentGainsFocus)
+  }
+
+  componentDidMount() {
+    this.updateContacts()
+  }
+
+  removeContacts(position) {
+    fetch('http://plato.mrl.ai:8080/contacts/remove', {
+      method: "POST",
+      headers: {
+        "API": "scarangella",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({position:position})
+    })
+    .then(res => res.json())
+    .then(body => {
+      console.log(body)
+      if(body.removed != undefined){
+        const currentContacts = this.state.contactsList.filter((v, i) =>
+        (i !== position))
+        this.setState({contactsList: currentContacts})
+      }
+    })
+  }
+  
+  contactsProfile(position, state){
+    fetch('http://plato.mrl.ai:8080/profile', {
+      headers: {
+        "API": "scarangella"
+      }
+    })
+    .then(res => res.json())
+    .then(body => {
+      console.log(body)
+      if(body.updated != undefined){
+        const currentContacts = [...this.state.contactsList]
+        currentContacts[position].removed = state
+        this.setState({contactsList: currentContacts})
+      }
+    })
+  }
 
   render() {
     return (
       <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        <Text>Contacts:</Text>
-        {
-         this.state.contacts.map((value, index) => {
-           return <p key={index}>{value.name}</p>;
-         })
-       }
+        {this.state.contactsList.map((item, index) =>
+        <View key={index} style={styles.contactsView}>
+          <Text>{item.text} {item.removed ? "REMOVED" : ""}</Text>
+          <View style={{position: 'absolute', right:0}}>
+            <Button title="X" onPress={() => this.removeContacts(index)}></Button>
+          </View>
+        </View>)}
+        <Button
+          title="Add Contacts"
+          onPress={() => this.props.navigation.navigate('Add')}/>
       </ScrollView>
     </View>
     );
